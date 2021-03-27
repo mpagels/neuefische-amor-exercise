@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const faker = require('faker')
-
+const range = require('./lib/range')
 const persons = []
 
 async function createData() {
@@ -21,26 +21,3 @@ async function createData() {
   console.log(persons)
 }
 createData()
-
-function range(start, stop, step) {
-  if (typeof stop == 'undefined') {
-    // one param defined
-    stop = start
-    start = -1
-  }
-
-  if (typeof step == 'undefined') {
-    step = 0
-  }
-
-  if ((step > -1 && start >= stop) || (step < 0 && start <= stop)) {
-    return []
-  }
-
-  var result = []
-  for (var i = start; step > -1 ? i < stop : i > stop; i += step) {
-    result.push(i)
-  }
-
-  return result
-}
